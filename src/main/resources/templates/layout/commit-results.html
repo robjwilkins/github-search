@@ -1,0 +1,7 @@
+{{#commits}}
+<div class="container">Total results found: {{total_count}}</div>
+<div class="container">Incomplete results: {{incomplete_results}}</div>
+{{#items}}
+    <div class="container"><a href="{{url}}"> message: <b>{{commit.message}}</b>, sha: {{sha}}</a></div>
+{{/items}}
+{{/commits}}
