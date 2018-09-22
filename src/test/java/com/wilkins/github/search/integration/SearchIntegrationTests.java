@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @RestClientTest(SearchController.class)
 @SpringBootTest
-public class GithubSearchIntegrationTests {
+public class SearchIntegrationTests {
 
     private static final String INDEX = "index";
     @Autowired
