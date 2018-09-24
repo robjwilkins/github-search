@@ -1,7 +1,29 @@
 {{#commits}}
-<div class="container">Total results found: {{total_count}}</div>
-<div class="container">Incomplete results: {{incomplete_results}}</div>
-{{#items}}
-    <div class="container"><a href="{{url}}"> message: <b>{{commit.message}}</b>, sha: {{sha}}</a></div>
-{{/items}}
+<p><h2>Results</h2></p>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Message</th>
+        <th>Commit Sha</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#items}}
+    <tr>
+        <td>
+            <a href="{{html_url}}">{{commit.message}}</a>
+        </td>
+        <td>
+            {{sha}}
+        </td>
+    </tr>
+    {{/items}}
+    <tr>
+        <td>
+            Total results found:
+        </td>
+        <td>{{total_count}}</td>
+    </tr>
+    </tbody>
+</table>
 {{/commits}}
