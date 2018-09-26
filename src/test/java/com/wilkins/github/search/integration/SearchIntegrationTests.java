@@ -52,7 +52,7 @@ public class SearchIntegrationTests {
         server.expect(once(), requestTo(String.format("http://www.localhost:8001/search/%s?q=%s", "repositories", "foo")))
                 .andExpect(method(HttpMethod.GET))
                 .andExpect(header("accept", MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andRespond(withSuccess("{}", MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess("{\"items\":[]}", MediaType.APPLICATION_JSON));
 
         mockMvc.perform(get("/search?searchText=foo&searchType=repositories"))
                 .andExpect(status().isOk())
@@ -64,7 +64,7 @@ public class SearchIntegrationTests {
         server.expect(once(), requestTo(String.format("http://www.localhost:8001/search/%s?q=%s", "commits", "foo")))
                 .andExpect(method(HttpMethod.GET))
                 .andExpect(header("accept", "application/vnd.github.cloak-preview"))
-                .andRespond(withSuccess("{}", MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess("{\"items\":[]}", MediaType.APPLICATION_JSON));
 
         mockMvc.perform(get("/search?searchText=foo&searchType=commits"))
                 .andExpect(status().isOk())

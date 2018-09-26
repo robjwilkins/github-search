@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -45,6 +46,7 @@ public class SearchController {
         ResponseEntity<String> responseEntity = restTemplate.exchange(githubSearchUrl, HttpMethod.GET, entity, String.class);
         String body = responseEntity.getBody();
         Map<String, ?> results = objectMapper.readValue(body, new TypeReference<Map<String, ?>>() {});
+        log.info("Found {} results", ((List)results.get("items")).size());
         model.put(searchType.name(), results);
         return "index";
     }
